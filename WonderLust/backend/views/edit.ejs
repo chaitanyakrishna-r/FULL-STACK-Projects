@@ -1,0 +1,122 @@
+<% layout('/layouts/boilerplate') -%>
+
+<section class="wl-form-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+
+        <div class="wl-form-card">
+
+          <!-- Header -->
+          <div class="wl-form-header">
+            <p class="wl-form-eyebrow">WonderLust</p>
+            <h2 class="wl-form-title">Edit Listing</h2>
+            <p class="wl-form-subtitle">Update the details of your property</p>
+          </div>
+
+          <!-- Form -->
+          <form action="/listing/<%= editListing.id %>?_method=PATCH&redirectTo=<%= redirectTo %>" method="post" class="wl-form needs-validation" novalidate enctype="multipart/form-data">
+
+            <!-- Title -->
+            <div class="mb-3">
+              <label for="title" class="wl-label">Villa Name</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="wl-input form-control"
+                value="<%= editListing.title %>"
+                required>
+              <div class="invalid-feedback">Please enter a villa name.</div>
+            </div>
+
+            <!-- Price + Image URL -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-sm-6">
+                <label for="price" class="wl-label">Price per night</label>
+                <div class="wl-input-prefix-wrap">
+                  <span class="wl-input-prefix">₹</span>
+                  <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    class="wl-input form-control"
+                    value="<%= editListing.price %>"
+                    required>
+                </div>
+                <div class="invalid-feedback">Please enter a price.</div>
+              </div>
+              <div class="col-12 col-sm-6">
+                  <label class="wl-label">Current Image</label>
+                  <div class="wl-input" style="padding:0; overflow:hidden; border-radius:8px;">
+                    <img 
+                      src="<%= originalImageUrl %>" 
+                      alt="Current property image"
+                      style="width:100%; height:200px; object-fit:cover; display:block;">
+                  </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="url" class="wl-label">Upload Image</label>
+                <input
+                  type="file"
+                  id="image"
+                  name="listing[image]"
+                  class="wl-input form-control"
+                  >
+                  <div class="invalid-feedback">Please Upload Image.</div>
+              </div>
+            
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label for="description" class="wl-label">Description</label>
+              <textarea
+                id="description"
+                name="description"
+                class="wl-input form-control"
+                rows="4"
+                required><%= editListing.description %></textarea>
+              <div class="invalid-feedback">Please add a description.</div>
+            </div>
+
+            <!-- Location + Country -->
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-sm-6">
+                <label for="location" class="wl-label">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  class="wl-input form-control"
+                  value="<%= editListing.location %>"
+                  required>
+                <div class="invalid-feedback">Please enter a location.</div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="country" class="wl-label">Country</label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  class="wl-input form-control"
+                  value="<%= editListing.country %>"
+                  required>
+                <div class="invalid-feedback">Please enter a country.</div>
+              </div>
+            </div>
+
+        
+
+            <!-- Actions -->
+            <div class="wl-form-actions">
+              <a href="<%= redirectTo === 'allListing' ? '/listing' : `/listing/${editListing.id}` %>" class="wl-btn-cancel">Cancel</a>
+              <button type="submit" class="wl-btn-submit">Save Changes</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

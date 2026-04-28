@@ -1,0 +1,47 @@
+<% layout('/layouts/boilerplate') -%>
+
+<section class="wl-error-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 text-center">
+
+        <div class="wl-error-card">
+
+          <!-- Glowing orb -->
+          <div class="wl-error-glow"></div>
+
+          <!-- Error Code -->
+          <div class="wl-error-code">
+            <span><%= err.statusCode || 500 %></span>
+          </div>
+
+          <!-- Divider line -->
+          <div class="wl-error-line"></div>
+
+          <!-- Message -->
+          <h1 class="wl-error-title">
+            <%= err.statusCode === 404 ? "Page Not Found" :
+                err.statusCode === 403 ? "Access Forbidden" :
+                err.statusCode === 401 ? "Unauthorised" :
+                "Something Went Wrong" %>
+          </h1>
+
+          <p class="wl-error-message">
+            <%= err.message || "An unexpected error occurred. Please try again." %>
+          </p>
+
+          <!-- Actions -->
+          <div class="wl-error-actions">
+            <a href="/listing" class="wl-error-btn-primary">
+              <i class="fa-solid fa-compass"></i> Explore Listings
+            </a>
+            <a href="/" class="wl-error-btn-secondary">
+              <i class="fa-solid fa-house"></i> Go Home
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

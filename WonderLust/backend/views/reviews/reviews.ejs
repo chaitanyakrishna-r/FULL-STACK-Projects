@@ -1,0 +1,45 @@
+<section class="wl-reviews-section">
+
+  <!-- Add Review Form -->
+  <div class="wl-review-form-card">
+    <h4 class="wl-review-form-title">
+      <i class="fa-solid fa-star"></i> Leave a Review
+    </h4>
+
+    <form action="/listing/<%= listing._id %>/reviews" method="post" class="needs-validation" novalidate>
+
+      <!-- Rating -->
+      <div class="wl-form-group">
+        <label>Your Rating</label>
+        <div class="wl-star-rating">
+          <input type="radio" name="rating" value="5" id="s5"><label for="s5"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="rating" value="4" id="s4"><label for="s4"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="rating" value="3" id="s3"><label for="s3"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="rating" value="2" id="s2"><label for="s2"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="rating" value="1" id="s1"><label for="s1"><i class="fa-solid fa-star"></i></label>
+        </div>
+        <div class="invalid-feedback">Please select a rating</div>
+      </div>
+
+      <!-- Comment -->
+      <div class="wl-form-group">
+        <label for="comment">Your Review</label>
+        <textarea name="comment" id="comment" rows="4" placeholder="Share your experience..." required></textarea>
+        <div class="invalid-feedback">Please write a comment</div>
+      </div>
+
+      <button type="submit" class="wl-review-btn">
+        <i class="fa-solid fa-paper-plane"></i> Submit Review
+      </button>
+
+    </form>
+  </div>
+
+  <!-- Reviews List -->
+
+  <div class="wl-reviews-list">
+    
+    <%- include('./showReviews.ejs', {listing}) %>
+  </div>
+
+</section>

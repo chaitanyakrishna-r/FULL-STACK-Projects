@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Review - WonderLust</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <div class="auth-logo">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <h2>Edit Your Review</h2>
+            <p>Update your experience on <strong>WonderLust</strong></p>
+        </div>
+
+        <form action="/listing/<%= id %>/reviews/<%= review._id %>?_method=PATCH" method="post" class="auth-form">
+
+            <!-- Star Rating -->
+            <div class="wl-form-group">
+                <label>Your Rating</label>
+                <div class="wl-star-rating">
+                    <input type="radio" name="rating" value="5" id="s5" <%= review.rating === 5 ? 'checked' : '' %>>
+                    <label for="s5"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" name="rating" value="4" id="s4" <%= review.rating === 4 ? 'checked' : '' %>>
+                    <label for="s4"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" name="rating" value="3" id="s3" <%= review.rating === 3 ? 'checked' : '' %>>
+                    <label for="s3"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" name="rating" value="2" id="s2" <%= review.rating === 2 ? 'checked' : '' %>>
+                    <label for="s2"><i class="fa-solid fa-star"></i></label>
+                    <input type="radio" name="rating" value="1" id="s1" <%= review.rating === 1 ? 'checked' : '' %>>
+                    <label for="s1"><i class="fa-solid fa-star"></i></label>
+                </div>
+            </div>
+
+            <!-- Comment -->
+            <div class="wl-form-group">
+                <label for="comment">Your Review</label>
+                <textarea name="comment" id="comment" rows="4" placeholder="Share your experience..."><%= review.comment %></textarea>
+            </div>
+
+            <button type="submit" class="wl-review-btn">
+                <i class="fa-solid fa-pen"></i> Update Review
+            </button>
+
+            <a href="javascript:history.back()" class="wl-review-cancel">
+                <i class="fa-solid fa-xmark"></i> Cancel
+            </a>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

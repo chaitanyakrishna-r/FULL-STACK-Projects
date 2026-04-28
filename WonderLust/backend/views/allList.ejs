@@ -1,0 +1,91 @@
+<% layout('/layouts/boilerplate') -%>
+
+<!-- Hero Banner -->
+<section class="wl-hero">
+ 
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="wl-hero-eyebrow">WonderLust Collection</p>
+        <h1 class="wl-hero-title">Find your perfect <em>escape</em></h1>
+        <p class="wl-hero-subtitle">Handpicked stays across the world's most extraordinary destinations</p>
+      </div>
+      <div class="col-lg-5 d-none d-lg-flex justify-content-end align-items-center gap-5">
+        <div class="wl-stat">
+          <div class="wl-stat-number"><%= listings.length %>+</div>
+          <div class="wl-stat-label">Properties</div>
+        </div>
+        <div class="wl-stat">
+          <div class="wl-stat-number">50+</div>
+          <div class="wl-stat-label">Countries</div>
+        </div>
+        <div class="wl-stat">
+          <div class="wl-stat-number">4.9★</div>
+          <div class="wl-stat-label">Avg Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Listings Section -->
+<section class="wl-listings-section">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <div>
+         <%= successMsg %>
+        <h2 class="wl-section-title">All Listings</h2>
+        <p class="wl-section-sub"><%= listings.length %> properties available</p>
+      </div>
+      <a href="/listing/new" class="wl-btn-primary">
+        <i class="fa-solid fa-plus"></i> New Listing
+      </a>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="row g-4">
+      <% for(let listing of listings){ %>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="wl-card">
+
+          <!-- Image -->
+          <a href="/listing/<%= listing._id %>" class="wl-card-img-link">
+            <div class="wl-card-img-wrap">
+              <img src="<%= listing.image.url %>" alt="<%= listing.title %>">
+              <span class="wl-card-price">₹<%= listing.price.toLocaleString("en-IN") %> / night</span>
+            </div>
+          </a>
+
+          <!-- Body -->
+          <a href="/listing/<%= listing._id %>" class="wl-card-body-link">
+            <div class="wl-card-body">
+              <h5 class="wl-card-title"><%= listing.title %></h5>
+              <p class="wl-card-location">
+                <i class="fa-solid fa-location-dot"></i>
+                <%= listing.location %>, <%= listing.country %>
+              </p>
+              <p class="wl-card-desc"><%= listing.description.substring(0, 72) %>...</p>
+            </div>
+          </a>
+
+          <!-- Actions -->
+          <!-- <div class="wl-card-actions">
+            <a href="/listing/<%= listing.id %>/edit?redirectTo=allListing" class="wl-btn-edit">
+              <i class="fa-solid fa-pen"></i> Edit
+            </a>
+            <form action="/listing/<%= listing.id %>?_method=DELETE" method="post">
+              <button type="submit" class="wl-btn-delete">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>
+            </form>
+          </div> -->
+
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+  </div>
+</section>

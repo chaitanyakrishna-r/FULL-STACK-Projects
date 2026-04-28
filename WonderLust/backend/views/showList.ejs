@@ -1,0 +1,76 @@
+<% layout('/layouts/boilerplate') -%>
+
+<section class="wl-show-section">
+  <div class="container">
+
+    <!-- Back Button -->
+    <a href="/listing" class="wl-btn-back mb-4 d-inline-flex align-items-center gap-2">
+      <i class="fa-solid fa-arrow-left"></i> Back to Listings
+    </a>
+
+    <div class="row g-4">
+
+      <!-- Left: Image -->
+      <div class="col-12 col-lg-7">
+        <div class="wl-show-img-wrap">
+          <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="wl-show-img">
+          <div class="wl-show-img-overlay">
+            <span class="wl-show-badge">
+              <i class="fa-solid fa-location-dot"></i>
+              <%= listing.location %>, <%= listing.country %>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Details -->
+      <div class="col-12 col-lg-5">
+        <div class="wl-show-content">
+
+          <!-- Title + Price -->
+          <div class="wl-show-top">
+            <p><i>Posted by <%= listing.owner.username %></i></p>
+            <h1 class="wl-show-title"><%= listing.title %></h1>
+            <p class="wl-show-location">
+              <i class="fa-solid fa-location-dot"></i>
+              <%= listing.location %>, <%= listing.country %>
+            </p>
+            <div class="wl-show-price-box">
+              <span class="wl-show-price">₹<%= listing.price.toLocaleString("en-IN") %></span>
+              <span class="wl-show-per-night">/ night</span>
+            </div>
+          </div>
+
+          <div class="wl-show-divider"></div>
+
+          <!-- Description -->
+          <p class="wl-show-description"><%= listing.description %></p>
+
+          <div class="wl-show-divider"></div>
+
+           <%if(currentUser && currentUser._id.equals(listing.owner._id)){%>
+         
+              <!-- Actions -->
+          <div class="wl-show-actions">
+            <a href="/listing/<%= listing.id %>/edit?redirectTo=show" class="wl-btn-edit-show">
+              <i class="fa-solid fa-pen"></i> Edit Listing
+            </a>
+            <form action="/listing/<%= listing.id %>?_method=DELETE" method="post">
+              <button type="submit" class="wl-btn-delete-show">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>
+            </form>
+          
+          </div>
+          <%}%>
+      
+        </div>
+      </div>
+      <div>
+        
+        <%- include('./reviews/reviews.ejs',{listing}) %>
+      </div>
+
+    </div>
+  </div>
+</section>
