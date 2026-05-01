@@ -2271,3 +2271,12 @@ section.wl-error-section::before {
     padding-right: 4px;
   }
 }
+
+.wl-filter-chip {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tax-info{
+  display: none;
+}

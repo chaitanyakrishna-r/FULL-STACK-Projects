@@ -78,6 +78,24 @@
               <div class="invalid-feedback">Please add a description.</div>
             </div>
 
+            <!-- category -->
+             
+              <div class="row g-3 mb-4">
+              <div class="col-12 col-sm-6">
+                <label for="location" class="wl-label">category</label>
+                <select name="category" id="">
+                  <% for (let category of categories){ %>
+                  <option value="<%= category %>"> <%= category %> </option>
+                  <% } %>
+                  <option value="Beach">Beach</option>
+                </select>
+                
+              </div>
+              
+                 
+              
+
+
             <!-- Location + Country -->
             <div class="row g-3 mb-4">
               <div class="col-12 col-sm-6">

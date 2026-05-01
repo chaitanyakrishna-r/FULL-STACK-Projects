@@ -3,68 +3,69 @@
     <div class="wl-filter-bar">
       <div class="wl-filter-scroll">
 
-        <button class="wl-filter-chip active" data-filter="all">
+        <a href="/listing" class="wl-filter-chip active">
           <i class="fa-solid fa-border-all"></i>
           All
-        </button>
+        </a>
 
-        <a href="/listing?category=beach" class="wl-filter-chip" data-filter="beach">
+        <a href="/listing?category=Beach" class="wl-filter-chip">
           <i class="fa-solid fa-umbrella-beach"></i>
           Beach
         </a>
 
-        <button class="wl-filter-chip" data-filter="mountain">
+        <a href="/listing?category=Mountain" class="wl-filter-chip">
           <i class="fa-solid fa-mountain"></i>
           Mountain
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="cabin">
+        <a href="/listing?category=Cabins" class="wl-filter-chip">
           <i class="fa-solid fa-house-chimney"></i>
           Cabins
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="pool">
+        <a href="/listing?category=Amazing Pool" class="wl-filter-chip">
           <i class="fa-solid fa-person-swimming"></i>
           Amazing Pools
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="city">
+        <a href="/listing?category=Iconic Cities" class="wl-filter-chip">
           <i class="fa-solid fa-city"></i>
           Iconic Cities
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="farm">
+        <a href="/listing?category=Farms" class="wl-filter-chip">
           <i class="fa-solid fa-tractor"></i>
           Farms
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="lake">
+        <a href="/listing?category=Lakefront" class="wl-filter-chip">
           <i class="fa-solid fa-water"></i>
           Lakefront
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="arctic">
+        <a href="/listing?category=Arctic" class="wl-filter-chip">
           <i class="fa-solid fa-snowflake"></i>
           Arctic
-        </button>
+        </a>
 
-        <button class="wl-filter-chip" data-filter="omg">
+        <a href="/listing?category=OMG" class="wl-filter-chip">
           <span class="wl-omg-label">OMG!</span>
-        </button>
+        </a>
 
       </div>
 
       <div class="wl-filter-divider"></div>
 
       <div class="wl-filter-right">
-        <button class="wl-filter-btn-outline">
+        <a href="#" class="wl-filter-btn-outline">
           <i class="fa-solid fa-sliders"></i>
           Filters
-        </button>
-        <div class="wl-toggle-wrap">
+        </a>
+
+        <div class="wl-toggle-wrap" >
           <span class="wl-toggle-label">Total before taxes</span>
           <label class="wl-toggle">
-            <input type="checkbox" />
+            <input type="checkbox" id="tax-switch" />
             <span class="wl-toggle-track"></span>
           </label>
         </div>
@@ -72,3 +73,4 @@
     </div>
   </div>
 </section>
+

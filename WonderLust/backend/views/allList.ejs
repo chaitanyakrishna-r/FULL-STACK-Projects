@@ -28,7 +28,7 @@
   </div>
 </section>
 <!-- Filters -->
-  <%- include('./includes/filters') %>
+  <%- include('./includes/filters',{categories}) %>
 
 <!-- Listings Section -->
 <section class="wl-listings-section">
@@ -56,7 +56,9 @@
           <a href="/listing/<%= listing._id %>" class="wl-card-img-link">
             <div class="wl-card-img-wrap">
               <img src="<%= listing.image.url %>" alt="<%= listing.title %>">
-              <span class="wl-card-price">₹<%= listing.price.toLocaleString("en-IN") %> / night</span>
+              <span class="wl-card-price">₹<%= listing.price.toLocaleString("en-IN") %> / night
+              <i class="tax-info"> +18% GST</i>
+              </span>
             </div>
           </a>
 
@@ -91,3 +93,17 @@
 
   </div>
 </section>
+
+<script>
+  let taxSwitch = document.getElementById('tax-switch');
+  taxSwitch.addEventListener("click",()=>{
+    let taxInfo = document.getElementsByClassName('tax-info');
+    for (let info of taxInfo){
+      if(info.style.display !== 'inline'){
+        info.style.display = 'inline';
+      }else{
+        info.style.display = 'none';
+      }
+    }
+  })
+</script>

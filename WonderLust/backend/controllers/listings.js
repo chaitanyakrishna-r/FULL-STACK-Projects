@@ -2,18 +2,23 @@ const Listing = require("../models/listing.js");
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
-
+ const categories = Listing.schema.path('category').enumValues;
 
 //index route
 module.exports.index = async(req, res)=>{
-    console.log(req.query.category);
-    const listings = await Listing.find({});
-    res.render("allList.ejs",{listings});
+   
+    const {category} = req.query;
+    let query = {};
+    if(category){
+        query.category = category;
+    }
+    const listings = await Listing.find(query);
+    res.render("allList.ejs",{listings,categories});
 }
 
 // create new form
 module.exports.renderNewListing = (req,res)=>{
-    res.render("newList.ejs");
+    res.render("newList.ejs",{categories});
  }
 
  // post for create new listing
@@ -33,7 +38,8 @@ module.exports.createListing = async(req, res)=>{
         .send();
 
        
-        const {title, description,location, country, price} = req.body;
+        const {title, description,location, country, price,category} = req.body;
+        console.log(category)
         const {path:url , filename} = req.file;
          // Check required fields explicitly
         // if (!title || !description || !location || !country || !price) {
@@ -46,10 +52,10 @@ module.exports.createListing = async(req, res)=>{
                 location,
                 country,
                 price,
+                category,
                 image:{
                 url:url ,
                 filename:filename,
-    
             }
         })
         newListing.owner = req.user._id;
